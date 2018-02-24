@@ -21,17 +21,17 @@ import javax.servlet.http.HttpSession;
 public class Compras extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-String [] items = new String [] { "Bote con 3 Pelotas de Tenis", 
-            "Bat de Baseball de madera deBeer W1610LL",
-            "Porterías y balón de FootBall rápido", 
-            "Velero de madera de balsa" } ;
+String [] items = new String [] { "Google Pixel 2", 
+            "iPhone 8",
+            "Nokia 8", 
+            "Moto z" } ;
 
-String [] imagenes = new String[] { "tenis.gif",
-              "bat.gif",
-              "porterias.gif",
-              "velero.gif" } ;                                        
+String [] imagenes = new String[] { "pixel2.jpg",
+              "iphone8.jpg",
+              "nokia8.jpg",
+              "motoz.jpg" } ;                                        
 
-float [] Precio = new float[] { 12.95f, 36.50f, 35.00f, 15.45f } ;
+float [] Precio = new float[] { 18100.50f, 16799.99f, 14599.99f, 8999.99f } ;
 float Imp1 = .02f ;  // 2%
 float Imp2 = .035f ; // 3.5%
 float Imp3 = .04f ;  // 4%
@@ -69,8 +69,8 @@ float MEX_POST = .08f ;  // 8%
 		Compra( out, purchases, request ) ;  
 		else { 
 		out.println( "<html>" ) ;
-		out.println( "<head><title>Shopping Cart</title></head>" ) ;
-		out.println( "<body BGCOLOR=\"#FFFF99\"><p>" );                       
+		out.println( "<head><title>Carrito de compra</title></head>" ) ;
+		out.println( "<body BGCOLOR=\"#4EC7E6\"><p>" );                       
 		if ( request.getParameter( "checkout" ) != null &&
 		! EmptyCar( purchases ) )           
 		Checkout( out, purchases, request.getRequestURI() ) ;           
@@ -111,23 +111,23 @@ float MEX_POST = .08f ;  // 8%
 		void doForm( PrintWriter out, int [] purchases, String requestURI, String imgPath ) {
 
 		out.println( "<form method=POST action="+ requestURI +">" );
-		out.println( "<h1><center><i>Almacenes Deportivos</i></center></h1>" );                          
-		out.println( "<h2><center>Selecciona tus Artículos de Temporada !</center></h2>" );
+		out.println( "<h1><center><i>Celulares</i></center></h1>" );                          
+		out.println( "<h2><center>Selecciona tu celular favorito:</center></h2>" );
 		out.println( "<TABLE BORDER=1 ALIGN=CENTER>\n" +
-		"<TR BGCOLOR=\"#FFAD00\">\n" +
+		"<TR BGCOLOR=\"#6ABBC7\">\n" +
 		"<TH> <TH>Artículo<TH>Precio<TH>Cantidad" );
 	
 		imgPath =  imgPath.substring(0, imgPath.lastIndexOf('\\'));
 		
 		for( int i=0; i < items.length; i++ )
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD BGCOLOR=\"#FFFFFF\" ALIGN=\"CENTER\"><img src=\"" + imgPath + "\\img\\" + imagenes[i] + 
-		"\"><TD ALIGN=\"CENTER\">" + items[i] + "<TD>$ " + Float.toString( Precio[i] ) + "<TD><input name=\"" + 
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD BGCOLOR=\"#FFFFFF\" ALIGN=\"CENTER\"><img src=\"" + imgPath + "\\img\\" + imagenes[i] + 
+		"\" width = \"200px\"><TD ALIGN=\"CENTER\">" + items[i] + "<TD>$ " + Float.toString( Precio[i] ) + "<TD><input name=\"" + 
 		items[ i ] + "\"value=0 size=3 align=\"right\">" );
 		out.println( "</TABLE>" );
-		out.println( "<p><center><input type=submit name=add value=\"Add To Cart\">&nbsp&nbsp \n"
-		    + "<input type=submit name=checkout value=\"Check Out\">&nbsp&nbsp \n"
-		    + "<input type=submit name=clear value=\"Clear Cart\">&nbsp&nbsp \n"
-		    + "<input type=submit name=update value=\"Update Cart\">"
+		out.println( "<p><center><input type=submit name=add value=\"Agregar al carrito\">&nbsp&nbsp \n"
+		    + "<input type=submit name=checkout value=\"Revisar carrito\">&nbsp&nbsp \n"
+		    + "<input type=submit name=clear value=\"Limpiar carrito\">&nbsp&nbsp \n"
+		    + "<input type=submit name=update value=\"Actualizar carrito\">"
 		+ "</center>" ) ; 
 		out.println( "<hr><h2>Tu Carrito de Compras :</h2>" );                      
 		}
@@ -148,13 +148,13 @@ float MEX_POST = .08f ;  // 8%
 		if ( purchases[ i ] != 0 )
 		{
 		Subtotal = Precio[i] * purchases[ i ] ;                	                 
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + items[i] + "<TD>$ " + Float.toString( Precio[i] ) + "<TD ALIGN=\"RIGHT\">" + 
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + items[i] + "<TD>$ " + Float.toString( Precio[i] ) + "<TD ALIGN=\"RIGHT\">" + 
 		     Integer.toString( purchases[ i ] ) + "<TD ALIGN=\"CENTER\"> <input type=\"checkbox\" name=\"" + "Ch" + items[i] + 
 		     "\" value=\"" + "Checked" + "\">" + "<TD>$ " + Float.toString( Subtotal ) );                                      
 		Total = Total + Subtotal ;
 		}
 		}
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + " " + "<TD>" + " " + "<TD>" + " "+ "<TD>" +
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + " " + "<TD>" + " " + "<TD>" + " "+ "<TD>" +
 		"Total : " + "<TD>$ " + Float.toString( Total ) );                                  
 		out.println( "</TABLE>" );
 		out.println( "<br>" ); 
@@ -171,7 +171,7 @@ float MEX_POST = .08f ;  // 8%
 		float Subtotal = 0.0f ;
 		float Total = 0.0f ;
 		out.println( "<form method=POST action="+ requestURI +">" );
-		out.println( "<h1><center><i>Almacenes Deportivos</i></center></h1>" );                          
+		out.println( "<h1><center><i>Celulares</i></center></h1>" );                          
 		out.println( "<h2><center>Compra de Artículos</center></h2>" );
 		out.println( "<TABLE BORDER=1 ALIGN=CENTER>\n" +
 		"<TR BGCOLOR=\"#FFAD00\">\n" +
@@ -181,46 +181,46 @@ float MEX_POST = .08f ;  // 8%
 		if ( purchases[ i ] != 0 )
 		{
 		Subtotal = Precio[i] * purchases[ i ] ;                	                 
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + items[i] + "<TD>$ " + Float.toString( Precio[i] ) + "<TD ALIGN=\"RIGHT\">" + 
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + items[i] + "<TD>$ " + Float.toString( Precio[i] ) + "<TD ALIGN=\"RIGHT\">" + 
 		    Integer.toString( purchases[ i ] ) + 
 		    "<TD>$ " + Float.toString( Subtotal ) );                 
 		Total = Total + Subtotal ;
 		}
 		}
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + " " + "<TD>" + " " + "<TD>" +
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + " " + "<TD>" + " " + "<TD>" +
 		"Total : " + "<TD>$ " + Float.toString( Total ) );
 		if ( Total <= 3567.00 )
 		{
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + " " + "<TD>" + " " + "<TD>" +
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + " " + "<TD>" + " " + "<TD>" +
 		 "Impuesto : " + "<TD>$ " + Float.toString( Total * Imp1 ) );                
 		TotalConImp = Total + Total * Imp1 ; 
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + " " + "<TD>" + " " + "<TD>" +
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + " " + "<TD>" + " " + "<TD>" +
 		 "Total : " + "<TD>$ " + Float.toString( TotalConImp ) );                
 		}                                
 		else
 		if ( Total > 3567.00 && Total <= 5678.00 )
 		{
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + " " + "<TD>" + " " + "<TD>" +
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + " " + "<TD>" + " " + "<TD>" +
 		    "Impuesto : " + "<TD>$ " + Float.toString( Total * Imp2 ) );                
 		TotalConImp = Total + Total * Imp2 ;                                
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + " " + "<TD>" + " " + "<TD>" +
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + " " + "<TD>" + " " + "<TD>" +
 		    "Total : " + "<TD>$ " + Float.toString( TotalConImp) );                                  	                  	
 		}
 		else
 		if ( Total > 5678.00 )
 		{
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + " " + "<TD>" + " " + "<TD>" +
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + " " + "<TD>" + " " + "<TD>" +
 		      "Impuesto : " + "<TD>$ " + Float.toString( Total * Imp3 ) );
 		TotalConImp = Total + Total * Imp3 ;                            
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD>" + " " + "<TD>" + " " + "<TD>" +
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD>" + " " + "<TD>" + " " + "<TD>" +
 		      "Total : " + "<TD>$ " + Float.toString( TotalConImp) );                                  	                  	                                        	
 		}                              
-		out.println( "<TR BGCOLOR=\"#FFAD00\"><TH ALIGN=\"CENTER\">Empresa de Envío <TH ALIGN=\"CENTER\">Importe <TH ALIGN=\"CENTER\">Elegir <TH ALIGN=\"CENTER\">Total" ); 
-		out.println( "<TR BGCOLOR=\"#FFFF00\"><TD> DHL Envío en 48 Hrs. <TD>" + Float.toString( TotalConImp * DHL ) + 
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TH ALIGN=\"CENTER\">Empresa de Envío <TH ALIGN=\"CENTER\">Importe <TH ALIGN=\"CENTER\">Elegir <TH ALIGN=\"CENTER\">Total" ); 
+		out.println( "<TR BGCOLOR=\"#E4FAFC\"><TD> DHL Envío en 48 Hrs. <TD>" + Float.toString( TotalConImp * DHL ) + 
 		"<TD ALIGN=\"CENTER\"><input type=\"radio\" name=\"Envio\" checked value=\"DHL\"> <TD>" + Float.toString( TotalConImp + TotalConImp * DHL ) + "\n" +
-		"<TR BGCOLOR=\"#FFFF00\"><TD> UPS Envío en 24 Hrs. <TD>" + Float.toString( TotalConImp * UPS )  + 
+		"<TR BGCOLOR=\"#E4FAFC\"><TD> UPS Envío en 24 Hrs. <TD>" + Float.toString( TotalConImp * UPS )  + 
 		"<TD ALIGN=\"CENTER\"><input type=\"radio\" name=\"Envio\" value=\"UPS\"> <TD>" + Float.toString( TotalConImp + TotalConImp * UPS ) + "\n" +
-		"<TR BGCOLOR=\"#FFFF00\"><TD> MEX POST Envío en 12 Hrs. <TD>" + Float.toString( TotalConImp * MEX_POST ) + 
+		"<TR BGCOLOR=\"#E4FAFC\"><TD> MEX POST Envío en 12 Hrs. <TD>" + Float.toString( TotalConImp * MEX_POST ) + 
 		"<TD ALIGN=\"CENTER\"><input type=\"radio\" name=\"Envio\" value=\"MexPost\"> <TD>" +  Float.toString( TotalConImp + TotalConImp * MEX_POST ) ) ;           	
 		out.println( "</TABLE>" );
 		out.println( "<br>" ); 
@@ -254,9 +254,9 @@ float MEX_POST = .08f ;  // 8%
 		fecha = formato.format( theDate ) ;
 
 		out.println( "<html>" ) ;
-		out.println( "<head><title>Shopping Cart</title></head>" ) ;
+		out.println( "<head><title>Carrito de compra</title></head>" ) ;
 		out.println( "<body><p>" );                       
-		out.println( "<h1><center><i>Almacenes Deportivos</i></center></h1>" );                          
+		out.println( "<h1><center><i>Celulares</i></center></h1>" );                          
 		out.println( "<h2><center>Comprobante de Compra de Artículos</center></h2>" );
 		out.println( "Fecha: " + fecha.substring(0, 2).trim() + " de " +
 		Meses[ Integer.parseInt( fecha.substring(3, 5).trim() ) - 1 ] +
