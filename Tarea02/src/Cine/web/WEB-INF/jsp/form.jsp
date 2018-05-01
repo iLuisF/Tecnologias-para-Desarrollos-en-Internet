@@ -7,6 +7,8 @@
         <meta charset="UTF-8" />
         <title>Boleto</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
         <!---Datos de la pelicula constantes-->
@@ -17,8 +19,9 @@
             <thead>
                 <tr>
                     <th><center>Poster</center></th>
-                    <th><center>Datos de la pelicula</center></th>
-                </tr>
+            <th><center>Datos de la pelicula</center></th>
+            <th><center>Similares</center></th>
+            </tr>
             </thead>
             <tbody>
                 <tr>
@@ -61,6 +64,54 @@
                             </tbody>
                         </table>
                     </td>
+                    <td>
+                        <div class="container-fluid">
+                            <div id="jsaAboutCarousel" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#jsaAboutCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#jsaAboutCarousel" data-slide-to="1"></li>
+                                    <li data-target="#jsaAboutCarousel" data-slide-to="2"></li>
+                                </ol>
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+
+                                    <div class="item active">
+                                        <img src="http://es.web.img3.acsta.net/r_1920_1080/pictures/14/03/10/10/35/587504.jpg" alt="JSA-About" style="width:170px;" />
+                                        <div class="carousel-caption">
+                                            <h3>Vengadores</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="item">
+                                        <img src="http://speedytv.com/wp-content/uploads/2017/10/qjiskwlV1qQzRCjpV0cL9pEMF9a-720x1080.jpg" alt="JSA-About" style="width:170px;" />
+                                        <div class="carousel-caption">
+                                            <h3>Star Wars</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="item">
+                                        <img src="https://pbs.twimg.com/media/DWAjE1DWsAA42kF.jpg" alt="JSA-About" style="width:170px;" />
+                                        <div class="carousel-caption">
+                                            <h3>Black Panther</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Left and right controls -->
+                                <a class="left carousel-control" href="#jsaAboutCarousel" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#jsaAboutCarousel" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
                 </tr>                
             </tbody>
         </table>
@@ -98,8 +149,8 @@
                     <form:errors path="sala" />
                 </p>
                 <center>
-                <img src="https://i.imgur.com/qT4fVbq.jpg" 
-                             alt="Butacas" width="500px" class="img-thumbnail">
+                    <img src="https://i.imgur.com/qT4fVbq.jpg" 
+                         alt="Butacas" width="500px" class="img-thumbnail">
                 </center>
                 <p>
                     <form:label path="asiento">Asiento: </form:label>
@@ -114,10 +165,10 @@
                 </p>
                 <hr />
                 <p align="right"><input type="submit" value="Continuar" class="btn btn-success" dir="rtl"/></p>
-            </form:form>
+                </form:form>
 
         </div>
-    </div>
+    </div>    
 
 </body>
 </html>
