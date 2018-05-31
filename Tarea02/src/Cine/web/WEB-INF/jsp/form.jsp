@@ -8,7 +8,15 @@
         <title>Boleto</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> 
+        <script>
+        $(function() {
+        $("#datepicker").datepicker();
+        });
+</script>
     </head>
     <body>
         <!---Datos de la pelicula constantes-->
@@ -46,8 +54,8 @@
                                     <td>Español</td>
                                 </tr>
                                 <tr>
-                                    <td>Dia: </td>
-                                    <td>Jueves 29 de marzo</td>
+                                    <td>Sala: </td>
+                                    <td>2</td>
                                 </tr>
                                 <tr>
                                     <td>Hora: </td>
@@ -58,8 +66,9 @@
                                     <td>Cinemex parque lindavista</td>
                                 </tr>
                                 <tr>
-                                    <td>Sala: </td>
-                                    <td>2</td>
+
+                                                                        <td>Dia: </td>
+                                    <td><input type="text" id="datepicker"></p></td>
                                 </tr>
                             </tbody>
                         </table>
