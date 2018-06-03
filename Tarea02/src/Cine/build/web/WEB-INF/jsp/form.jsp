@@ -1,11 +1,11 @@
-
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Boleto</title>
+        <title><spring:message code="label.boleto"/></title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script
@@ -26,9 +26,9 @@
         <table>
             <thead>
                 <tr>
-                    <th><center>Poster</center></th>
-            <th><center>Datos de la pelicula</center></th>
-            <th><center>Similares</center></th>
+                    <th><center><spring:message code="label.poster"/></center></th>
+            <th><center><spring:message code="label.datosPelicula"/></center></th>
+            <th><center><spring:message code="label.similares"/></center></th>
             </tr>
             </thead>
             <tbody>
@@ -39,35 +39,35 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Titulo: </th>
-                                    <th>Interstellar</th>
+                                    <th><spring:message code="label.titulo"/></th>
+                                    <th><spring:message code="label.tituloPelicula"/></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Clasificación: </td>
+                                    <td><spring:message code="label.clasificacion"/></td>
                                     <td>B</td>
 
                                 </tr>
                                 <tr>
-                                    <td>Versión: </td>
-                                    <td>Español</td>
+                                    <td><spring:message code="label.version"/></td>
+                                    <td><spring:message code="label.versionIdioma"/></td>
                                 </tr>
                                 <tr>
-                                    <td>Sala: </td>
+                                    <td><spring:message code="label.sala"/></td>
                                     <td>2</td>
                                 </tr>
                                 <tr>
-                                    <td>Hora: </td>
+                                    <td><spring:message code="label.hora"/></td>
                                     <td>12:00 PM</td>
                                 </tr>
                                 <tr>
-                                    <td>Cine: </td>
+                                    <td><spring:message code="label.cine"/></td>
                                     <td>Cinemex parque lindavista</td>
                                 </tr>
                                 <tr>
 
-                                                                        <td>Dia: </td>
+                                    <td><spring:message code="label.dia"/></td>
                                     <td><input type="text" id="datepicker"></p></td>
                                 </tr>
                             </tbody>
@@ -129,31 +129,31 @@
 
     <div class="container">
         <div class="row">
-            <h1>Ingrese sus datos</h1>
+            <h1><spring:message code="label.datos"/></h1>
             <form:form method="POST" commandName="boleto">
 
                 <form:errors path="*" element="div" cssClass="alert alert-danger" />
 
                 <p>
-                    <form:label path="nombre">Nombre del cliente: </form:label>
+                    <form:label path="nombre"><spring:message code="label.nombreCliente"/></form:label>
                     <form:input path="nombre" cssClass="form-control" />
                     <form:errors path="nombre" />
                 </p>
 
                 <p>
-                    <form:label path="tituloPelicula">Titulo de la pelicula: </form:label>
+                    <form:label path="tituloPelicula"><spring:message code="label.titulo"/></form:label>
                     <form:input path="tituloPelicula" cssClass="form-control" />
                     <form:errors path="tituloPelicula" />
                 </p>
 
                 <p>
-                    <form:label path="precio">Precio: </form:label>
+                    <form:label path="precio"><spring:message code="label.precio"/></form:label>
                     <form:input path="precio" cssClass="form-control" />
                     <form:errors path="precio" />
                 </p>
 
                 <p>
-                    <form:label path="sala">Sala: </form:label>
+                    <form:label path="sala"><spring:message code="label.sala"/></form:label>
                     <form:input path="sala" cssClass="form-control" />
                     <form:errors path="sala" />
                 </p>
@@ -162,13 +162,13 @@
                          alt="Butacas" width="500px" class="img-thumbnail">
                 </center>
                 <p>
-                    <form:label path="asiento">Asiento: </form:label>
+                    <form:label path="asiento"><spring:message code="label.asiento"/></form:label>
                     <form:input path="asiento" cssClass="form-control" />
                     <form:errors path="asiento" />
                 </p>
 
                 <p>
-                    <form:label path="cine">Cine: </form:label>
+                    <form:label path="cine"><spring:message code="label.cine"/></form:label>
                     <form:input path="cine" cssClass="form-control" />
                     <form:errors path="cine" />
                 </p>
@@ -179,5 +179,12 @@
         </div>
     </div>    
 
+
+<span style="float: right">
+	<a href="?lang=es">es</a> 
+	| 
+	<a href="?lang=en">en</a>
+</span>
+    
 </body>
 </html>
