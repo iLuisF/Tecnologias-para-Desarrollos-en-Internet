@@ -33,14 +33,24 @@ public class FormController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("form");
         //Se ponen datos constantes, segun los requerimientos.    
-        mav.addObject("boleto", new Boleto(null, "Interstellar", 73, 2, "A1", "Cinemex parque lindavista", null));
+        mav.addObject("boleto", new Boleto(null, "Interstellar", 73, 2, "A1", "Cinemex parque lindavista", null, null));
         return mav;
     }
 
     //recibimos y validamos los datos de nuestro formulario
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView form(@ModelAttribute("boleto") Boleto boleto, BindingResult result, SessionStatus status, 
-                            /*@ModelAttribute("uploadForm") ImagenesSubidas uploadForm,*/ Model map) {
+                            Model map) {
+        List<MultipartFile> files = boleto.getFiles();
+        List<String> fileNames = new ArrayList<>();	
+        if(null != files && files.size() > 0) {
+            for (MultipartFile multipartFile : files) {
+                String fileName = multipartFile.getOriginalFilename();
+                fileNames.add(fileName);
+                    //Handle file content - multipartFile.getInputStream()
+		}
+        }	
+        map.addAttribute("files", fileNames);
         this.boletoValidador.validate(boleto, result);
         if (result.hasErrors()) {
             //Los datos son incorrectos segun las validaciones.
@@ -68,20 +78,5 @@ public class FormController {
         }
     }
     
-    @RequestMapping(method = RequestMethod.POST)
-    public String save(@ModelAttribute("uploadForm") ImagenesSubidas uploadForm, Model map) {
-        List<MultipartFile> files = uploadForm.getFiles();
-            List<String> fileNames = new ArrayList<>();	
-            if(null != files && files.size() > 0) {
-                for (MultipartFile multipartFile : files) {
-                    String fileName = multipartFile.getOriginalFilename();
-                    fileNames.add(fileName);
-                    //Handle file content - multipartFile.getInputStream()
-		}
-            }	
-            map.addAttribute("files", fileNames);
-            return "file_upload_success";
-
-    }
 
 }

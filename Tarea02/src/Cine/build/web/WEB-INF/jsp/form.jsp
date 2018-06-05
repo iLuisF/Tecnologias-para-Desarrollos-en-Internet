@@ -14,9 +14,22 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> 
         <script>
         $(function() {
-        $("#datepicker").datepicker();
+            $("#datepicker").datepicker();
         });
-</script>
+    </script>
+    <script>
+        $(document).ready(function() {
+            //add more file components if Add is clicked
+            $('#addFile').click(function() {
+		var fileIndex = $('#fileTable tr').children().length - 1;
+		$('#fileTable').append(
+				'<tr><td>'+
+				'	<input type="file" name="files['+ fileIndex +']" />'+
+				'</td></tr>');
+            });
+	
+        });
+    </script>
     </head>
     <body>
         <!---Datos de la pelicula constantes-->
@@ -175,6 +188,8 @@
                 
                 <p>
                     
+                </p>
+                    
                 
                 <hr />
                 <p align="right"><input type="submit" value="Continuar" class="btn btn-success" dir="rtl"/></p>
@@ -184,16 +199,16 @@
     </div>    
     <div class="container">
         <div class="row">
-            <h1><spring:message code="label.datos"/></h1>
+            <h1>Sube tu foto</h1>
             <form:form method="post" action="save.html" modelAttribute="uploadForm" enctype="multipart/form-data">
-                <p>Select files to upload. Press Add button to add more file inputs.</p>
+                <p>Agrega una o varias fotos para complementar tu experiencia.</p>
                 <input id="addFile" type="button" value="Add File" />
                 <table id="fileTable">
                     <tr>
 			<td><input name="files[0]" type="file" /></td>
                     </tr>		
                 </table>
-                <br/><input type="submit" value="Upload" />
+               <!-- <br/><input type="submit" value="Upload" /> -->
                 </p>
                 
             </form:form>
@@ -201,19 +216,6 @@
         </div>
     </div> 
             
-    <script>
-$(document).ready(function() {
-	//add more file components if Add is clicked
-	$('#addFile').click(function() {
-		var fileIndex = $('#fileTable tr').children().length - 1;
-		$('#fileTable').append(
-				'<tr><td>'+
-				'	<input type="file" name="files['+ fileIndex +']" />'+
-				'</td></tr>');
-	});
-	
-});
-</script>
 
 
 <span style="float: right">

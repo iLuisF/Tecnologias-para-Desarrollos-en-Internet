@@ -23,6 +23,7 @@ public class BoletoValidador implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sala", "required.sala", "La sala es obligatoria.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "asiento", "required.asiento", "El asiento es obligatorio.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cine", "required.cine", "El cine es obligatorio.");
+        //ValidationUtils.rejectIfEmptyOrWhitespace(errors, "files", "required.cine", "Foto de usuario obligatoria.");
         //ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fechaHora", "field.nombre.required", "La fecha y hora es obligatoria.");     
         
     }

@@ -2,6 +2,8 @@
 package com.kaab.modelos;
 
 import java.sql.Timestamp;
+import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Modela el objeto boleto.
@@ -18,9 +20,10 @@ public class Boleto {
     private String asiento;
     private String cine;
     private Timestamp fechaHora;
+    private List<MultipartFile> files;
 
     public Boleto(String nombre, String tituloPelicula, double precio, int sala,
-            String asiento, String cine, Timestamp fechaHora) {        
+            String asiento, String cine, Timestamp fechaHora, List<MultipartFile> files) {        
         this.nombre = nombre;
         this.tituloPelicula = tituloPelicula;
         this.precio = precio;
@@ -28,10 +31,11 @@ public class Boleto {
         this.asiento = asiento;
         this.cine = cine;
         this.fechaHora = fechaHora;
+        this.files = files;
     }
 
     public Boleto(int id, String nombre, String tituloPelicula, double precio,
-            int sala, String asiento, String cine, Timestamp fechaHora) {
+            int sala, String asiento, String cine, Timestamp fechaHora, List<MultipartFile> files) {
         this.id = id;
         this.nombre = nombre;
         this.tituloPelicula = tituloPelicula;
@@ -40,6 +44,7 @@ public class Boleto {
         this.asiento = asiento;
         this.cine = cine;
         this.fechaHora = fechaHora;
+        this.files = files;
     }
 
     public Boleto() {
@@ -108,6 +113,14 @@ public class Boleto {
 
     public void setFechaHora(Timestamp fechaHora) {
         this.fechaHora = fechaHora;
+    }
+    
+    public void setFiles(List<MultipartFile> f){
+        this.files = f;
+    }
+    
+    public List<MultipartFile> getFiles(){
+        return this.files;
     }
        
 }

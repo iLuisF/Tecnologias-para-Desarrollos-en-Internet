@@ -14,9 +14,22 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> 
         <script>
         $(function() {
-        $("#datepicker").datepicker();
+            $("#datepicker").datepicker();
         });
-</script>
+    </script>
+    <script>
+        $(document).ready(function() {
+            //add more file components if Add is clicked
+            $('#addFile').click(function() {
+		var fileIndex = $('#fileTable tr').children().length - 1;
+		$('#fileTable').append(
+				'<tr><td>'+
+				'	<input type="file" name="files['+ fileIndex +']" />'+
+				'</td></tr>');
+            });
+	
+        });
+    </script>
     </head>
     <body>
         <!---Datos de la pelicula constantes-->
@@ -201,19 +214,6 @@
         </div>
     </div> 
             
-    <script>
-$(document).ready(function() {
-	//add more file components if Add is clicked
-	$('#addFile').click(function() {
-		var fileIndex = $('#fileTable tr').children().length - 1;
-		$('#fileTable').append(
-				'<tr><td>'+
-				'	<input type="file" name="files['+ fileIndex +']" />'+
-				'</td></tr>');
-	});
-	
-});
-</script>
 
 
 <span style="float: right">
