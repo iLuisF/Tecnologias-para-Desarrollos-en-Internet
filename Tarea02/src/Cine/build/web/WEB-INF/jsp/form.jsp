@@ -197,16 +197,16 @@
     </div>    
     <div class="container">
         <div class="row">
-            <h1><spring:message code="label.datos"/></h1>
+            <h1>Sube tus fotos en nuestros cines</h1>
             <form:form method="post" action="save.html" modelAttribute="uploadForm" enctype="multipart/form-data">
-                <p>Select files to upload. Press Add button to add more file inputs.</p>
+                <p>Comparte tu experiencia con nosotros.</p>
                 <input id="addFile" type="button" value="Add File" />
                 <table id="fileTable">
                     <tr>
 			<td><input name="files[0]" type="file" /></td>
                     </tr>		
                 </table>
-                <!--<br/><input type="submit" value="Upload" /> -->
+                <br/><input type="submit" value="Upload" />
                 </p>
                 
             </form:form>
