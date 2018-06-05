@@ -46,7 +46,7 @@ public class FormController {
             dataSource.setDriverClassName("com.mysql.jdbc.Driver");
             dataSource.setUrl("jdbc:mysql://localhost:3306/cine");
             dataSource.setUsername("root");
-            dataSource.setPassword("A312218342");
+            dataSource.setPassword("1234");
             //Insetamos en la base de datos.
             JdbcBoletoDAO jdbcBoletoDAO = new JdbcBoletoDAO();
             jdbcBoletoDAO.setDataSource(dataSource);
