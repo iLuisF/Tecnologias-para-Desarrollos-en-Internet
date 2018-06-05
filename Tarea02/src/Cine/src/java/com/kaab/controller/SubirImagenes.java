@@ -29,12 +29,12 @@ public class SubirImagenes {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(
-			@ModelAttribute("uploadForm") ImagenesSubidas uploadForm,
+            @ModelAttribute("uploadForm") ImagenesSubidas uploadForm,
 					Model map) {
 		
 		List<MultipartFile> files = uploadForm.getFiles();
 
-		List<String> fileNames = new ArrayList<String>();
+		List<String> fileNames = new ArrayList<>();
 		
 		if(null != files && files.size() > 0) {
 			for (MultipartFile multipartFile : files) {

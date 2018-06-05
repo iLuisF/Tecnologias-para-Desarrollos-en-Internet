@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kaab.modelos.ImagenesSubidas;
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+
+
 @Controller
 @RequestMapping("form.htm")
 public class FormController {
@@ -32,7 +39,8 @@ public class FormController {
 
     //recibimos y validamos los datos de nuestro formulario
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView form(@ModelAttribute("boleto") Boleto boleto, BindingResult result, SessionStatus status) {
+    public ModelAndView form(@ModelAttribute("boleto") Boleto boleto, BindingResult result, SessionStatus status, 
+                            /*@ModelAttribute("uploadForm") ImagenesSubidas uploadForm,*/ Model map) {
         this.boletoValidador.validate(boleto, result);
         if (result.hasErrors()) {
             //Los datos son incorrectos segun las validaciones.
@@ -55,8 +63,25 @@ public class FormController {
             ModelAndView mav = new ModelAndView();
             mav.setViewName("exito");
             mav.addObject("nombre", boleto.getNombre());
+            
             return mav;
         }
+    }
+    
+    @RequestMapping(method = RequestMethod.POST)
+    public String save(@ModelAttribute("uploadForm") ImagenesSubidas uploadForm, Model map) {
+        List<MultipartFile> files = uploadForm.getFiles();
+            List<String> fileNames = new ArrayList<>();	
+            if(null != files && files.size() > 0) {
+                for (MultipartFile multipartFile : files) {
+                    String fileName = multipartFile.getOriginalFilename();
+                    fileNames.add(fileName);
+                    //Handle file content - multipartFile.getInputStream()
+		}
+            }	
+            map.addAttribute("files", fileNames);
+            return "file_upload_success";
+
     }
 
 }
