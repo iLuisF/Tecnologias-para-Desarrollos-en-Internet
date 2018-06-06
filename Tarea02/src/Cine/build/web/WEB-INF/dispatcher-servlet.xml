@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    
     
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
@@ -59,6 +59,8 @@
     <bean name="formController" class="com.kaab.controller.FormController" />
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="index" />           
+          p:viewName="index" />  
     
+        
 </beans>
+    

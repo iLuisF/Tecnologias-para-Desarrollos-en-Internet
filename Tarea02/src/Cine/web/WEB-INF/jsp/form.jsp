@@ -46,9 +46,13 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><img src="https://imgc.allpostersimages.com/img/print/u-g-F7SGU60.jpg?w=550&h=550&p=0" 
+                    <td>
+                        <a href="${pageContext.request.contextPath}/interestelar.jpg">
+                        <img src="${pageContext.request.contextPath}/img/interestelar.jpg" 
                              alt="Interstellar" width="150px" class="img-thumbnail"></td>
                     <td>
+                        <!--descargar poster -->
+                        
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -100,21 +104,21 @@
                                 <div class="carousel-inner">
 
                                     <div class="item active">
-                                        <img src="http://es.web.img3.acsta.net/r_1920_1080/pictures/14/03/10/10/35/587504.jpg" alt="JSA-About" style="width:170px;" />
+                                        <img src="${pageContext.request.contextPath}/img/avengers.jpg" alt="JSA-About" style="width:170px;" />
                                         <div class="carousel-caption">
                                             <h3>Vengadores</h3>
                                         </div>
                                     </div>
 
                                     <div class="item">
-                                        <img src="http://speedytv.com/wp-content/uploads/2017/10/qjiskwlV1qQzRCjpV0cL9pEMF9a-720x1080.jpg" alt="JSA-About" style="width:170px;" />
+                                        <img src="${pageContext.request.contextPath}/img/rogueO.jpg" alt="JSA-About" style="width:170px;" />
                                         <div class="carousel-caption">
                                             <h3>Star Wars</h3>
                                         </div>
                                     </div>
 
                                     <div class="item">
-                                        <img src="https://pbs.twimg.com/media/DWAjE1DWsAA42kF.jpg" alt="JSA-About" style="width:170px;" />
+                                        <img src="${pageContext.request.contextPath}/img/blackP.jpg" alt="JSA-About" style="width:170px;" />
                                         <div class="carousel-caption">
                                             <h3>Black Panther</h3>
                                         </div>
