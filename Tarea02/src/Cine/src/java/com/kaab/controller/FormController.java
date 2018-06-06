@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kaab.modelos.ImagenesSubidas;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -85,29 +86,22 @@ public class FormController {
         }
     }
     
-    @RequestMapping("download/img/{fileName:.+}")
-    public void download(HttpServletRequest request,
-                                     HttpServletResponse response,
-                                     @PathVariable("fileName") String fileName)
-    {
-        //If user is not authorized - he should be thrown out from here itself
-         
-        //Authorized user will download the file
-        String dataDirectory = request.getServletContext().getRealPath("/img/");
-        Path file = Paths.get(dataDirectory, fileName);
-        if (Files.exists(file))
-        {
-            response.setContentType("/img");
-            response.addHeader("Content-Disposition", "attachment; filename="+fileName);
-            try
-            {
-                Files.copy(file, response.getOutputStream());
-                response.getOutputStream().flush();
-            }
-            catch (IOException ex) {
-                ex.printStackTrace();
-            }
+    @RequestMapping("/download/{fileName}")
+    public String download(@PathVariable("fileName") String fileName,
+                            HttpServletResponse response, 
+                            HttpServletRequest request){
+        try{
+            response.setHeader("Content-Disposition", "inline;filename=\"" + fileName + "\"");
+            OutputStream out = response.getOutputStream();
+            String dataDirectory = request.getServletContext().getRealPath("/img/");
+            Path file = Paths.get(dataDirectory, fileName);
+            response.setContentType("jpg");
+            Files.copy(file, out);
+            response.getOutputStream().flush();
+        }catch(IOException e){
+           e.printStackTrace();
         }
+        return null;
     }
 
 }

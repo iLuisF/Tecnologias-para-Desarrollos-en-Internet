@@ -47,7 +47,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/interestelar.jpg">
+                        <a href="${pageContext.request.contextPath}/download/interestelar.html">
                         <img src="${pageContext.request.contextPath}/img/interestelar.jpg" 
                              alt="Interstellar" width="150px" class="img-thumbnail"></td>
                     <td>
