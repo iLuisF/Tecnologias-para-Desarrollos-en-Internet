@@ -15,12 +15,14 @@
 	<title>Spring MVC Multiple File Upload</title>
 </head>
 <body>
-	<h1>Spring Multiple File Upload example</h1>
-	<p>Following files are uploaded successfully.</p>
+        <div class="row" style="background-color:antiquewhite; width:800px" >
+	<h1>Gracias por compartir tu experiencia con nosotros</h1>
+	<p>Se han cargado los siguientes archivos:</p>
 	<ol>
 		<c:forEach items="${files}" var="file">
 			<li>${file}</li>
 		</c:forEach>
 	</ol>
+        </div>
 </body>
 </html>

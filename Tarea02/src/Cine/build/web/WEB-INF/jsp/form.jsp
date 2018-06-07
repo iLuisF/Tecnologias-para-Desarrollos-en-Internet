@@ -33,7 +33,9 @@
     </head>
     <body>
         <!---Datos de la pelicula constantes-->
+    
     <center>
+    <div calss="container" align="center">    
         <br />
         <br />
         <table>
@@ -143,11 +145,12 @@
                 </tr>                
             </tbody>
         </table>
+        </div>
     </center>
     <!--Fin-->
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="background-color:#ccffcc">
             <h1><spring:message code="label.datos"/></h1>
             <form:form method="POST" commandName="boleto">
 
@@ -203,19 +206,18 @@
     </div>    
     <div class="container">
         <div class="row">
-            <h1>Sube tus fotos en nuestros cines</h1>
+            <h1>¿Tienes fotos en nuestras sucursales?</h1>
             <form:form method="post" action="save.htm" modelAttribute="uploadForm" enctype="multipart/form-data">
                 <p>Comparte tu experiencia con nosotros.</p>
-                <input id="addFile" type="button" value="Add File" />
+                <input id="addFile" type="button" value="Agregar archivo" /></br>
                 <table id="fileTable">
                     <tr>
-			<td><input name="files[0]" type="file" size="50"/></td>
+                        </br>
+                        <td><input name="files[0]" type="file" size="50"/></br></td>
                     </tr>		
-                    <tr>
-			<td><input name="files[1]" type="file" size="50" /></td>
-                    </tr>		
+                    		
                 </table>
-                <br/><input type="submit" value="Upload" />
+                <br/><input type="submit" value="Subir" />
                 </p>
                 
             </form:form>
