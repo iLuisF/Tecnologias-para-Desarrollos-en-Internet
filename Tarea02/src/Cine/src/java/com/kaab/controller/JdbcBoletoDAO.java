@@ -52,7 +52,9 @@ public class JdbcBoletoDAO implements BoletoDao {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
+            
 
         } finally {
             if (conn != null) {
