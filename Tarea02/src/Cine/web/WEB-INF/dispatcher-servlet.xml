@@ -49,7 +49,9 @@
         <property name="defaultLocale" value="es"/>
     </bean>
 
-
+    <bean id="handlerMapping"
+              class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+    </bean>
     
     <!--
     The index controller.
