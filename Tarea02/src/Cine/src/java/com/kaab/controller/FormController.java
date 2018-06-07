@@ -19,7 +19,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,8 +36,9 @@ public class FormController {
 
     @RequestMapping(value="form.htm", method = RequestMethod.GET)
     public ModelAndView form() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("form");
+        
+        ModelAndView mav = new ModelAndView();        
+        mav.setViewName("form");        
         //Se ponen datos constantes, segun los requerimientos.    
         mav.addObject("boleto", new Boleto(null, "Interstellar", 73, 2, "A1", "Cinemex parque lindavista", null));
         return mav;
@@ -79,7 +79,6 @@ public class FormController {
     public String download(@PathVariable("fileName") String fileName,
                             HttpServletResponse response 
                             /*HttpServletRequest request*/){
-        System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         try{
             response.setHeader("Content-Disposition", "inline;filename=\"" + fileName + "\"");
             OutputStream out = response.getOutputStream();
@@ -95,28 +94,26 @@ public class FormController {
     }
 
 
-  //  @RequestMapping(value = "/save", method = RequestMethod.POST)
     @RequestMapping(value = "save.htm", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute("uploadForm") ImagenesSubidas imgs, 
-            Model map){
+    public String save(@ModelAttribute("uploadForm") ImagenesSubidas imgs, Model map){
+        
         List<MultipartFile> files = imgs.getFiles();
-
-        List<String> fileNames = new ArrayList<String>();		
-	if(null != files && files.size() > 0) {
+        List<String> fileNames = new ArrayList<String>();
+        
+	if(files != null) {
             for (MultipartFile multipartFile : files) {
                 String fileName = multipartFile.getOriginalFilename();
        		fileNames.add(fileName);
                 System.out.println(fileName);
             }
-        }
-        System.out.println("HOLAAAAAAAAAA");
-        
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("file_upload_success");
-        mav.addObject("files", fileNames);
-        //map.addAttribute("files", fileNames);
-	return mav;
+        }else{
+            System.out.println("HOLAAAAAAAAAA");
+        }      
+        map.addAttribute("files", fileNames);
+	return "file_upload_success";
     }
+    
+    
     
 
 

@@ -21,7 +21,7 @@
         $(document).ready(function() {
             //add more file components if Add is clicked
             $('#addFile').click(function() {
-		var fileIndex = $('#fileTable tr').children().length - 1;
+		var fileIndex = $('#fileTable tr').children().length;
 		$('#fileTable').append(
 				'<tr><td>'+
 				'	<input type="file" name="files['+ fileIndex +']" />'+
@@ -209,13 +209,18 @@
                 <input id="addFile" type="button" value="Add File" />
                 <table id="fileTable">
                     <tr>
-			<td><input name="files[0]" type="file" /></td>
+			<td><input name="files[0]" type="file" size="50"/></td>
+                    </tr>		
+                    <tr>
+			<td><input name="files[1]" type="file" size="50" /></td>
                     </tr>		
                 </table>
                 <br/><input type="submit" value="Upload" />
                 </p>
                 
             </form:form>
+                
+                
 
         </div>
     </div> 

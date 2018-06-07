@@ -5,6 +5,7 @@
  */
 package com.kaab.modelos;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImagenesSubidas {
     
     private List<MultipartFile> files;
+   
     
     public void setFiles(List<MultipartFile> f){
         this.files = f;
