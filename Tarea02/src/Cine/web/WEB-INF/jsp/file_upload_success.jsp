@@ -16,8 +16,8 @@
 </head>
 <body>
         <div class="row" style="background-color:antiquewhite; width:800px" >
-	<h1>Gracias por compartir tu experiencia con nosotros</h1>
-	<p>Se han cargado los siguientes archivos:</p>
+	<h1><spring:message code="label.graciasCompartir"/></h1>
+	<p><spring:message code="label.cargadoArchivos"/></p>
 	<ol>
 		<c:forEach items="${files}" var="file">
 			<li>${file}</li>
