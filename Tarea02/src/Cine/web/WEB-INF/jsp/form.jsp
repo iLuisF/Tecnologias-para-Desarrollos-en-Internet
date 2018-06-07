@@ -47,9 +47,11 @@
             <tbody>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/download/interestelar.html">
+                        <a href="${pageContext.request.contextPath}/img/interestelar.jpg" download="interestelar.jpg">
                         <img src="${pageContext.request.contextPath}/img/interestelar.jpg" 
-                             alt="Interstellar" width="150px" class="img-thumbnail"></td>
+                             alt="Interstellar" width="150px" class="img-thumbnail" title="Da clic para descargar el poster"/>
+                        </a>
+                    </td>
                     <td>
                         <!--descargar poster -->
                         

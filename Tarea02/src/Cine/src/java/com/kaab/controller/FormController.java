@@ -88,16 +88,17 @@ public class FormController {
     
     @RequestMapping("/download/{fileName}")
     public String download(@PathVariable("fileName") String fileName,
-                            HttpServletResponse response, 
-                            HttpServletRequest request){
+                            HttpServletResponse response 
+                            /*HttpServletRequest request*/){
+        System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         try{
             response.setHeader("Content-Disposition", "inline;filename=\"" + fileName + "\"");
             OutputStream out = response.getOutputStream();
-            String dataDirectory = request.getServletContext().getRealPath("/img/");
-            Path file = Paths.get(dataDirectory, fileName);
+            //String dataDirectory = request.getServletContext().getRealPath("/img/");
+            Path file = Paths.get("/home/kar/tecnologias/Tecnologias-para-Desarrollos-en-Internet/Tarea02/src/Cine/web/img/", "interestelar");
             response.setContentType("jpg");
             Files.copy(file, out);
-            response.getOutputStream().flush();
+            out.flush();
         }catch(IOException e){
            e.printStackTrace();
         }
