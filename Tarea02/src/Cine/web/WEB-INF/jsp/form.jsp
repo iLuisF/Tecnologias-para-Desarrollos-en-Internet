@@ -206,9 +206,9 @@
     </div>    
     <div class="container">
         <div class="row">
-            <h1>¿Tienes fotos en nuestras sucursales?</h1>
+            <h1><spring:message code="label.tienes"/></h1>
             <form:form method="post" action="save.htm" modelAttribute="uploadForm" enctype="multipart/form-data">
-                <p>Comparte tu experiencia con nosotros.</p>
+                <p><spring:message code="label.comparte"/></p>
                 <input id="addFile" type="button" value="Agregar archivo" /></br>
                 <table id="fileTable">
                     <tr>
