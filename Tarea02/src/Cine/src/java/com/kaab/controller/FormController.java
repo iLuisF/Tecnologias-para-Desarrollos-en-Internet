@@ -27,7 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
-@RequestMapping("form.htm")
 public class FormController {
 
     private BoletoValidador boletoValidador;
@@ -36,7 +35,7 @@ public class FormController {
         this.boletoValidador = new BoletoValidador();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value="form.htm", method = RequestMethod.GET)
     public ModelAndView form() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("form");
@@ -46,7 +45,7 @@ public class FormController {
     }
 
     //recibimos y validamos los datos de nuestro formulario
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="form.htm", method = RequestMethod.POST)
     public ModelAndView form(@ModelAttribute("boleto") Boleto boleto, BindingResult result, SessionStatus status) {
         this.boletoValidador.validate(boleto, result);
         if (result.hasErrors()) {
@@ -60,8 +59,8 @@ public class FormController {
             DriverManagerDataSource dataSource = new DriverManagerDataSource();
             dataSource.setDriverClassName("com.mysql.jdbc.Driver");
             dataSource.setUrl("jdbc:mysql://localhost:3306/cine");
-            dataSource.setUsername("ulises");
-            dataSource.setPassword("password");
+            dataSource.setUsername("root");
+            dataSource.setPassword("1234");
             //Insetamos en la base de datos.
             JdbcBoletoDAO jdbcBoletoDAO = new JdbcBoletoDAO();
             jdbcBoletoDAO.setDataSource(dataSource);
@@ -96,7 +95,8 @@ public class FormController {
     }
 
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+  //  @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "save.htm", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute("uploadForm") ImagenesSubidas imgs, 
             Model map){
         List<MultipartFile> files = imgs.getFiles();
@@ -106,9 +106,11 @@ public class FormController {
             for (MultipartFile multipartFile : files) {
                 String fileName = multipartFile.getOriginalFilename();
        		fileNames.add(fileName);
-
+                System.out.println(fileName);
             }
         }
+        System.out.println("HOLAAAAAAAAAA");
+        
         ModelAndView mav = new ModelAndView();
         mav.setViewName("file_upload_success");
         mav.addObject("files", fileNames);

@@ -204,7 +204,7 @@
     <div class="container">
         <div class="row">
             <h1>Sube tus fotos en nuestros cines</h1>
-            <form:form method="post" action="save.html" modelAttribute="uploadForm" enctype="multipart/form-data">
+            <form:form method="post" action="save.htm" modelAttribute="uploadForm" enctype="multipart/form-data">
                 <p>Comparte tu experiencia con nosotros.</p>
                 <input id="addFile" type="button" value="Add File" />
                 <table id="fileTable">
