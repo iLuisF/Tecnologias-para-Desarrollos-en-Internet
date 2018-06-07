@@ -41,24 +41,13 @@ public class FormController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("form");
         //Se ponen datos constantes, segun los requerimientos.    
-        mav.addObject("boleto", new Boleto(null, "Interstellar", 73, 2, "A1", "Cinemex parque lindavista", null, null));
+        mav.addObject("boleto", new Boleto(null, "Interstellar", 73, 2, "A1", "Cinemex parque lindavista", null));
         return mav;
     }
 
     //recibimos y validamos los datos de nuestro formulario
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView form(@ModelAttribute("boleto") Boleto boleto, BindingResult result, SessionStatus status, 
-                            Model map) {
-        List<MultipartFile> files = boleto.getFiles();
-        List<String> fileNames = new ArrayList<>();	
-        if(null != files && files.size() > 0) {
-            for (MultipartFile multipartFile : files) {
-                String fileName = multipartFile.getOriginalFilename();
-                fileNames.add(fileName);
-                    //Handle file content - multipartFile.getInputStream()
-		}
-        }	
-        map.addAttribute("files", fileNames);
+    public ModelAndView form(@ModelAttribute("boleto") Boleto boleto, BindingResult result, SessionStatus status) {
         this.boletoValidador.validate(boleto, result);
         if (result.hasErrors()) {
             //Los datos son incorrectos segun las validaciones.
@@ -86,6 +75,7 @@ public class FormController {
         }
     }
     
+
     @RequestMapping("/download/{fileName}")
     public String download(@PathVariable("fileName") String fileName,
                             HttpServletResponse response 
@@ -104,5 +94,28 @@ public class FormController {
         }
         return null;
     }
+
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView save(@ModelAttribute("uploadForm") ImagenesSubidas imgs, 
+            Model map){
+        List<MultipartFile> files = imgs.getFiles();
+
+        List<String> fileNames = new ArrayList<String>();		
+	if(null != files && files.size() > 0) {
+            for (MultipartFile multipartFile : files) {
+                String fileName = multipartFile.getOriginalFilename();
+       		fileNames.add(fileName);
+
+            }
+        }
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("file_upload_success");
+        mav.addObject("files", fileNames);
+        //map.addAttribute("files", fileNames);
+	return mav;
+    }
+    
+
 
 }
